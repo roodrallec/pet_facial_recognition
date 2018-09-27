@@ -1,0 +1,32 @@
+service: pet-face-recognition
+
+frameworkVersion: ">=1.2.0 <2.0.0"
+
+provider:
+  name: aws
+  profile: personal
+  region: eu-west-2
+  runtime: python3.6
+  timeout: 12
+  environment:
+    ACCESS_TOKEN: 'fake_token'
+
+plugins:
+  - serverless-python-requirements
+
+custom:
+  pythonRequirements:
+    dockerizePip: non-linux
+
+package:
+  exclude:
+    - node_modules/**
+    - venv/**
+
+functions:
+  identify:
+    handler: src/handler.identify
+    events:
+      - http:
+          path: identify
+          method: get
