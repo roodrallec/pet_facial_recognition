@@ -13,7 +13,6 @@
 <script src="Jquery/jquery-2.2.3.js"></script">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <script src="Jquery/jquery.blueberry.js"></script>
-<script src="Jquery/slideshow.js"></script>
 <script src="Jquery/wow.min.js"></script>
 <script>new WOW().init();</script>
 <script>
@@ -81,13 +80,7 @@
           </form>        
       </div>
   </div>
-  <!-- The dots/circles -->
-  <div style="text-align:center">
-    <span class="dot" onclick="currentSlide(1)"></span>
-    <span class="dot" onclick="currentSlide(2)"></span>
-    <span class="dot" onclick="currentSlide(3)"></span>
-  </div>
-
+  <!-- Pet profile form -->
   <div class="holder" id = "holder1" style="display: none">
     <div style="text-align:center">
       <h1>Please provide information about the pet</h1>
@@ -119,15 +112,27 @@
     </div>
   </div>
   <br>
-  <div class="mySlides fade">
+  <div id="slide1" class="mySlides" style="display: none">
     <img src="Images/Cat01.jpg" style="width:100%">
   </div>
-  <div class="mySlides fade">
+  <div id="slide2" class="mySlides" style="display: none">
     <img src="Images/Dog2.jpg" style="width:100%">
   </div>
-  <div class="mySlides fade">
+  <div id="slide3" class="mySlides" style="display: none">
     <img src="Images/Cat03.jpg" style="width:100%">
   </div>
+  <script>
+    showSlides(-1);
+    function showSlides(activeSlideIdx) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");      
+        if (activeSlideIdx >= 0)  $('#' + slides[activeSlideIdx].id).fadeOut(1000);
+        activeSlideIdx += 1
+        if (activeSlideIdx >= slides.length) activeSlideIdx = 0
+        $('#' + slides[activeSlideIdx].id).fadeIn(4000);        
+        setTimeout(showSlides.bind(null, activeSlideIdx), 10000);
+    }
+  </script>
   <script>
     // Initialize google maps
     function myMap() {
@@ -140,16 +145,6 @@
     }
   </script>
   <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWfKAttt-4nP7DrVVPHp7_25um-74auPQ&callback=myMap"></script> -->
-  <script>
-    function openTab(tabName) {
-      var i, x;
-      x = document.getElementsByClassName("containerTab");
-      for (i = 0; i < x.length; i++) {
-        x[i].style.display = "none";
-      }
-      document.getElementById(tabName).style.display = "block";
-    }
-  </script>
   <script type="text/javascript">
     function toggleUploadContainer() {        
         var x = document.getElementById("container1");        
