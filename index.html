@@ -1,0 +1,220 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta content="utf-8" http-equiv="encoding">
+<link rel="stylesheet" type="text/css" href="CSS/layout1.css">
+<link rel="stylesheet" type="text/css" href="CSS/form.css">
+<link rel="stylesheet" type="text/css" href="CSS/pre.css">
+<link rel="stylesheet" type ="text/css" href="CSS/animate.css">
+<link rel="stylesheet" type ="text/css" href="CSS/blueberry.css">
+
+<script src="Jquery/jquery-2.2.3.js"></script>
+<script src="Jquery/jquery-2.2.3.js"></script">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script src="Jquery/jquery.blueberry.js"></script>
+<script src="Jquery/slideshow.js"></script>
+<script>
+  $(window).load(function(){
+       $(".blueberry").blueberry();
+
+  });
+</script>
+<style>
+@font-face {
+  font-family:Moon;
+  src: url("Moon Light.otf") format("opentype");
+}
+@font-face {
+  font-family:Nautilus;
+  src: url("Nautilus.otf") format("opentype");
+}
+@font-face{
+
+  font-family:Alex;
+  src: url("AlexBrush-Regular.ttf") format("truetype");
+}
+@font-face{
+
+  font-family:Parisish;
+  src: url("Parisish.ttf") format("truetype");
+}
+@font-face{
+
+  font-family:Debby;
+  src: url("Debby.otf") format("opentype");
+}
+@font-face {
+  font-family:Nexa;
+  src: url("Nexa Light.otf") format("opentype");
+}
+@font-face {
+  font-family:London;
+  src: url("Londonfill.ttf") format("truetype");
+}
+</style>
+</head>
+<body>
+  <header>
+    <div class = "furry"><img src = "Images/petface1.png"></div>
+  </header>
+  <div class = " wow article-block slideInUp">
+    <h1  class="wow gap fadeIn" data-wow-duration="1s" data-wow-delay="1s">An image search tool for finding pets</h1>
+    <div class="article second-art">
+      <button class="button" onclick = "toggleUploadContainer()">Search for pets</button>          
+    </div>
+  </div>
+  <!-- Upload pet container -->
+  <div class="container" id="container1">
+      <h1>Please upload picture of your pet
+      </h1>
+      <div class="avatar-upload" >          
+          <div class="avatar-preview">
+              <div id="imagePreview" style="background-image:url('Images/Cat_sil.png')";>
+              </div>
+          </div>        
+          <form>
+            <input type='file' id="imageUpload" required="" accept=".png, .jpg, .jpeg" />
+            <button class="button" id ="btn4" onclick = "searchPets()">Search</button>
+          </form>        
+      </div>
+  </div>
+  <!-- The dots/circles -->
+  <div style="text-align:center">
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
+  </div>
+
+  <div class="holder" id = "holder1">
+    <div style="text-align:center">
+      <h1>Please provide information about the pet</h1>
+      <p>:</p>
+    </div>
+    <div class="row">
+      <div class="column">
+        <div id="map" style="width:100%;height:500px"></div>
+        <div id = "map_text"> <h1>Please point out where you saw the pet last</h1></div>
+      </div>
+      <div class="column">
+        <form action="/action_page.php">
+        <label for="fname"><h1>Type of pet</h1></label>
+        <select id="petType" name="Type">
+          <option value="Dog"><h1>Dog</h1></option>
+          <option value="Cat">Cat</option>
+        </select>
+          <label for="fname"><h1>Breed</h1></label>
+          <input type="text" id="fname" name="firstname" placeholder="Breed of the pet">
+          <label for="lname"><h1>Color</h1></label>
+          <input type="text" id="lname" name="lastname" placeholder="Color of the pet">
+          <label for="country"><h1>Age</h1></label>
+          <input type="text" id="lname" name="lastname" placeholder="Age of the pet">
+          <label for="subject"><h1>Note</h1></label>
+          <textarea id="subject" name="subject" placeholder="Additional Description" style="height:170px"></textarea>
+          <input type="submit" id= "submit" value="Submit" back>
+        </form>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="mySlides fade">
+    <img src="Images/Cat01.jpg" style="width:100%">
+  </div>
+  <div class="mySlides fade">
+    <img src="Images/Dog2.jpg" style="width:100%">
+  </div>
+  <div class="mySlides fade">
+    <img src="Images/Cat03.jpg" style="width:100%">
+  </div>
+  <script>
+    // Initialize google maps
+    function myMap() {
+      var myCenter = new google.maps.LatLng(41.385063,2.173404);
+      var mapCanvas = document.getElementById("map");
+      var mapOptions = {center: myCenter, zoom: 12};
+      var map = new google.maps.Map(mapCanvas, mapOptions);
+      var marker = new google.maps.Marker({position:myCenter});
+      marker.setMap(map);
+    }
+  </script>
+
+  <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWfKAttt-4nP7DrVVPHp7_25um-74auPQ&callback=myMap"></script> -->
+
+  <script>
+    var slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("dot");
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) {slideIndex = 1}
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        if (slides[slideIndex-1]) slides[slideIndex-1].style.display = "block";      
+        if (dots[slideIndex-1]) dots[slideIndex-1].className += " active";
+        setTimeout(showSlides, 4000); // Change image every 2 seconds
+    }
+    </script>
+
+    <script>
+    function openTab(tabName) {
+      var i, x;
+      x = document.getElementsByClassName("containerTab");
+      for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+      }
+      document.getElementById(tabName).style.display = "block";
+    }
+  </script>
+  <script type="text/javascript">
+    function toggleUploadContainer() {        
+        var x = document.getElementById("container1");        
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+  </script>
+  <script>
+  function uploadImage(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            $('#imagePreview').css('background-image', 'url('+e.target.result +')');
+            $('#imagePreview').hide();
+            $('#imagePreview').fadeIn(650);
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+  }
+  function searchPets() {
+    // TODO: code to retrieve search results from server
+  }
+  $("#imageUpload").change(function() {
+    uploadImage(this);
+  });
+  </script>
+  <script type="text/javascript">
+  function toggleResultsContainer() {
+      var x = document.getElementById("holder1");
+      if (x.style.display === "none") {
+          x.style.display = "block";
+      } else {
+          x.style.display = "none";
+      }
+  }
+  </script>
+  <script>
+  window.onload = function() {
+    document.getElementById("container1").style.display = 'none';
+    document.getElementById("holder1").style.display = 'none';
+  };
+  </script>
+</body>
