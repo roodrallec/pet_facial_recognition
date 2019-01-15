@@ -177,8 +177,8 @@
 </div>
 <!-- Pet profile form -->
 <div class="holder" id = "reg_form" style="display: none">
-    <form action="/action_page.php">
-        <table>
+    <form>
+        <table style="width:100%">
             <tr>
                 <th>
                     <div class="avatar-upload" >
@@ -295,6 +295,10 @@
     //     alert(obj.error);
     //   }
     // });
+  }
+
+  function registerNewPet() {
+    //TODO: send profile to database for storage.
   }
 
   function getUploadedImage() {
