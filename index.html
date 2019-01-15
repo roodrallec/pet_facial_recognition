@@ -49,7 +49,7 @@
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
             max-width: 300px;
             display : inline-block;
-            margin: relative;
+            margin: inherit;
             text-align: center;
             left : -33%;
         }
@@ -169,19 +169,18 @@
             <h1>Lost or found : Lost</h1>
             <p><button button class="button">Contact</button></p>
         </div>
-        <div class="second-art1" id="registerPet">
+        <div class="second-art1" id="register-pet">
             <h1> If you don't see you're pet, click below to register a new profile.</h1>
-            <p><button class="button" onclick = "toggleElement('login-box');">Register Pet</button></p>
+            <p><button class="button" onclick = "toggleElement('register-box');">Register Pet</button></p>
         </div>
     </div>
 </div>
 <!-- Pet profile form -->
 <br/>
-<div id="login-box" style="display: none">
+<div id="register-box" style="display: none">
     <div class="left">
         <h1>New Pet Profile</h1>
-
-        <input type="text" name="petname" placeholder="Pet's Name" />
+        <input type="text" name="petname" placeholder="Pet's Name" required/>
         <select id="pettype" name="pettype" placeholder="Pet type">
             <option value="Dog">Dog</option>
             <option value="Cat">Cat</option>
@@ -190,14 +189,27 @@
             <option value="lost">I've lost this pet</option>
             <option value="found">I've found this pet</option>
         </select>
-        <input type="text" name="email" placeholder="Contact E-mail" />
-        <input type="text" name="notes" placeholder="Additional Notes" />
-        <input type="submit" name="register_new_pet" value="Register Pet" onclick="registerNewPet();" />
+        <input type="text" name="email" placeholder="Contact E-mail" required/>
+        <input type="text" name="notes" placeholder="Additional Notes" required/>
+        <input type="submit" name="register_new_pet" value="Register Pet" onclick="toggleElement('register-box');toggleElement('register-pet');toggleElement('register-success');" />
     </div>
     <div class="right">
         <div class="avatar-upload" >
             <div class="avatar-preview">
                 <div id="registerNew"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="register-success" style="display: none">
+    <div class="left">
+        <h1>Congratulations, you have successfully registered your pet!</h1>
+        <p><button class="button" onclick = "window.location.reload()">Return</button></p>
+    </div>
+    <div class="right">
+        <div class="avatar-upload" >
+            <div class="avatar-preview">
+                <div id="success"><img src="Images/cropped-checkmark.png" style="width:100%"></div>
             </div>
         </div>
     </div>
