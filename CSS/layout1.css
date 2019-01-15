@@ -141,6 +141,16 @@ position: relative;
   left:15%;
     margin-bottom: 10px;
 }
+.fourth-art{
+    position: relative;
+    left:15%;
+    margin-bottom: 10px;
+}
+.reg_form{
+    position: relative;
+    left:15%;
+    margin-bottom: 10px;
+}
 .button {
   font-family:Parisish;
   onclick = "toggle_div_fun('sectiontohide');"
