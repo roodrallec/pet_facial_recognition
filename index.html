@@ -96,39 +96,39 @@
         <div class="article1 first-art">
             <div class="avatar-upload" >
                 <div class="avatar-preview">
-                    <div id="profile0" style="background-image:url('Images/Cat_sil.png')";></div>
+                    <div id="profile0" style="background-image:url('Images/Cat01.jpg')";></div>
                 </div>
             </div>
             <h1> Name : Jose the pirate</h1>
             <h1> id : 0111 </h1>
             <h1>Animal type : Cat</h1>
             <h1>Lost or found : Lost</h1>
-            <p><button button class="button">Contact</button></p>
+            <p><button button class="button"><a href="mailto:someone@example.com?Subject=Pet%20Match" target="_top"></a>Contact</button></p>
         </div>
 
         <div class="article1 second-art1">
             <div class="avatar-upload" >
                 <div class="avatar-preview">
-                    <div id="profile1" style="background-image:url('Images/Cat_sil.png')";></div>
+                    <div id="profile1" style="background-image:url('Images/Dog01.jpg')";></div>
                 </div>
             </div>
             <h1> Name : lucy</h1>
             <h1> id : 0251 </h1>
-            <h1>Animal type : Cat</h1>
+            <h1>Animal type : Dog</h1>
             <h1>Lost or found : Lost</h1>
-            <p><button button class="button">Contact</button></p>
+            <p><button button class="button"><a href="mailto:someone@example.com?Subject=Pet%20Match" target="_top"></a>Contact</button></p>
         </div>
         <div class="article1 third-art">
             <div class="avatar-upload" >
                 <div class="avatar-preview">
-                    <div id="profile2" style="background-image:url('Images/Cat_sil.png')";></div>
+                    <div id="profile2" style="background-image:url('Images/Dog2.jpg')";></div>
                 </div>
             </div>
             <h1> Name : jessie </h1>
             <h1> id : 0008</h1>
-            <h1>Animal type : Cat</h1>
+            <h1>Animal type : Dog</h1>
             <h1>Lost or found : Lost</h1>
-            <p><button button class="button">Contact</button></p>
+            <p><button button class="button"><a href="mailto:someone@example.com?Subject=Pet%20Match" target="_top"></a>Contact</button></p>
         </div>
     </div>
     <div class="article2">
@@ -142,7 +142,7 @@
             <h1> id : 0664 </h1>
             <h1>Animal type : Cat</h1>
             <h1>Lost or found : Lost</h1>
-            <p><button button class="button">Contact</button></p>
+            <p><button button class="button"><a href="mailto:someone@example.com?Subject=Pet%20Match" target="_top"></a>Contact</button></p>
         </div>
 
         <div class="article2 second-art1">
@@ -155,7 +155,7 @@
             <h1> id : 0452 </h1>
             <h1>Animal type : Cat</h1>
             <h1>Lost or found : Lost</h1>
-            <p><button button class="button">Contact</button></p>
+            <p><button button class="button"><a href="mailto:someone@example.com?Subject=Pet%20Match" target="_top"></a>Contact</button></p>
         </div>
         <div class="article2 third-art">
             <div class="avatar-upload" >
@@ -167,7 +167,7 @@
             <h1> id : 0452 </h1>
             <h1>Animal type : Cat</h1>
             <h1>Lost or found : Lost</h1>
-            <p><button button class="button">Contact</button></p>
+            <p><button button class="button"><a href="mailto:someone@example.com?Subject=Pet%20Match" target="_top"></a>Contact</button></p>
         </div>
         <div class="second-art1" id="register-pet">
             <h1> If you don't see you're pet, click below to register a new profile.</h1>
@@ -278,7 +278,7 @@
   function displayMatchedImages(matchedImages) {
     for (profileIdx = 0; profileIdx < matchedImages.length; profileIdx++) {
       toggleElement("results");
-      showImage(matchedImages[profileIdx], "#profile" + profileIdx);
+      // showImage(matchedImages[profileIdx], "#profile" + profileIdx);
       profileIdx += 1;
     }
     var imageUploadFile = getUploadedImage();
