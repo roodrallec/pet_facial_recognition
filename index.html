@@ -160,7 +160,7 @@
         <div class="article2 third-art">
             <div class="avatar-upload" >
                 <div class="avatar-preview">
-                    <div id="profile4" style="background-image:url('Images/Cat_sil.png')";></div>
+                    <div id="profile5" style="background-image:url('Images/Cat_sil.png')";></div>
                 </div>
             </div>
             <h1> Name : slash </h1>
@@ -169,13 +169,15 @@
             <h1>Lost or found : Lost</h1>
             <p><button button class="button">Contact</button></p>
         </div>
-    </div>
-</div>
-<div class="container1" id="results1" style="display: none" >
-    <div class="Fail">
-        <div id="SearchFail" style="background-image:url('Images/Cat_sil.png')";></div>
-        <h1> Sorry! No pets found </h1>
-        <p><button class="button" onclick=toggleElement("reg_form")>Register</button></p>
+        <div class="article2 third-art">
+            <div class="avatar-upload" >
+                <div class="avatar-preview">
+                    <div id="notFound"></div>
+                </div>
+            </div>
+            <h1> If you don't see you're pet, click below to register a new profile.</h1>
+            <p><button class="button" onclick = "toggleElement('reg_form')">Register Pet</button></p>
+        </div>
     </div>
 </div>
 <!-- Pet profile form -->
@@ -278,12 +280,6 @@
       profileIdx += 1;
     }
   }
-  function displayNoMatchText() {
-
-    toggleElement("results1");
-  }
-
-
 
   function recognizeImage(imageFile) {
     displayMatchedImages([imageFile]);
