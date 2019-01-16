@@ -225,7 +225,6 @@
 <script>
   showSlides(-1);
   function showSlides(activeSlideIdx) {
-    var i;
     var slides = document.getElementsByClassName("mySlides");
     if (activeSlideIdx >= 0)  $('#' + slides[activeSlideIdx].id).fadeOut(1000);
     activeSlideIdx += 1
@@ -283,20 +282,19 @@
     if (imageUploadFile != null) showImage(imageUploadFile, "#registerNew");
   }
 
-  function recognizeImage(imageFile) {
-    displayMatchedImages([imageFile]);
+  function recognizeImage(b64Image) {
+    // displayMatchedImages([imageFile]);
     /* if no match found    displayNoMatchText()*/
-    // return $.ajax({
-    //   url: "RECOGNITION_URL",  // INSERT URL TO RECOGNITIONS SERVICE HERE
-    //   type: "POST",
-    //   data: imageFile,
-    //   processData: false,
-    //   success: function (data) { displayMatchedImages(jQuery.parseJSON(data)); },
-    //   error: function (data) {
-    //     var obj = jQuery.parseJSON(data);
-    //     alert(obj.error);
-    //   }
-    // });
+    // console.log(b64Image);
+    return $.ajax({
+      url: 'http://167.99.61.137/cat_recognition_api/v1/actions/get_response',  // INSERT URL TO RECOGNITIONS SERVICE HERE
+      type: "POST",
+      data: JSON.stringify({ 'image': b64Image }),
+      // xhrFields: { withCredentials: true },
+      contentType: "application/json",
+      success: function (data) { console.log(data); },
+      error: function (data) { console.log(data); }
+    });
   }
 
   function registerNewPet() {
@@ -308,9 +306,22 @@
     if (files != null) return files[0];
   }
 
+  function getBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result.split(',')[1]);
+      reader.onerror = error => reject(error);
+    });
+  }
+
   function searchPets() {
-    var imageUploadFile = getUploadedImage();
-    if (imageUploadFile != null) recognizeImage(imageUploadFile);
+    var imageFile = getUploadedImage();
+    if (!imageFile) {
+      console.log("Missing image file to recognize");
+      return;
+    }
+    getBase64(imageFile).then(b64Image => recognizeImage(b64Image));
   }
 
   $("#imageUpload").change(function() {
